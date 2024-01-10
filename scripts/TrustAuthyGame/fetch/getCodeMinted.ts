@@ -1,11 +1,11 @@
 import { TrustAuthyGame } from '../../../types';
-import { JsonRpcProvider, inisrizeWolfTribe } from '../../../lib/contractUtil';
+import { JsonRpcProvider, inisrizeTrustAuthyGame } from '../../../lib/contractUtil';
 const webhookUrl =
   'https://hooks.slack.com/services/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';
 // 'https://hooks.slack.com/services/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'
 
 async function main(round: number) {
-  const erc721: TrustAuthyGame = await inisrizeWolfTribe();
+  const erc721: TrustAuthyGame = await inisrizeTrustAuthyGame();
   const tribeRoundCount = (await erc721.getTribeRound(round)).count.toString();
   console.log(`tribeRoundCount:`, tribeRoundCount);
 

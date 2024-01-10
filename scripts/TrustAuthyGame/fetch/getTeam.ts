@@ -1,9 +1,9 @@
 import { TrustAuthyGame } from '../../../types';
-import { JsonRpcProvider, inisrizeWolfTribe } from '../../../lib/contractUtil';
+import { JsonRpcProvider, inisrizeTrustAuthyGame } from '../../../lib/contractUtil';
 import chalk from 'chalk';
 
 async function main() {
-  const erc721: TrustAuthyGame = await inisrizeWolfTribe();
+  const erc721: TrustAuthyGame = await inisrizeTrustAuthyGame();
 
   const fromBlock = 21535039;
   const latestBlock = await JsonRpcProvider.getBlockNumber();

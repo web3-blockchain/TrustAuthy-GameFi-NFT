@@ -2,14 +2,14 @@ import { ethers } from 'hardhat';
 import { env } from '../../../lib/config';
 import { BigNumber, providers } from 'ethers';
 import { TrustAuthyGame } from '../../../types';
-import { inisrizeWolfTribe } from '../../../lib/contractUtil';
+import { inisrizeTrustAuthyGame } from '../../../lib/contractUtil';
 
 export async function main(to: string) {
   const [deployer, user1, user2] = await ethers.getSigners();
   console.log(`deployer address: ${await deployer.getAddress()}`);
   console.log(`deployer balance: ${await deployer.getBalance()}`);
 
-  const erc721: TrustAuthyGame = await inisrizeWolfTribe();
+  const erc721: TrustAuthyGame = await inisrizeTrustAuthyGame();
   const role: string = await erc721.DEFAULT_ADMIN_ROLE();
 
   const estimateGas: BigNumber = await erc721

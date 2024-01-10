@@ -4,7 +4,7 @@ import { TrustAuthyGame } from '../../../types';
 import {
   JsonRpcProvider,
   inisrizeTetherToken,
-  inisrizeWolfTribe,
+  inisrizeTrustAuthyGame,
 } from '../../../lib/contractUtil';
 
 async function main() {
@@ -12,7 +12,7 @@ async function main() {
   console.log(`deployer address: ${await deployer.getAddress()}`);
   console.log(`deployer balance: ${await deployer.getBalance()}`);
 
-  const erc721: TrustAuthyGame = await inisrizeWolfTribe();
+  const erc721: TrustAuthyGame = await inisrizeTrustAuthyGame();
   const usdt = await inisrizeTetherToken();
 
   const balance = await usdt.balanceOf(erc721.address);

@@ -1,13 +1,13 @@
 import { ethers } from 'hardhat';
 import { TrustAuthyGame } from '../../../types';
-import { inisrizeWolfTribe } from '../../../lib/contractUtil';
+import { inisrizeTrustAuthyGame } from '../../../lib/contractUtil';
 
 async function main(codes: string[]) {
   const [deployer] = await ethers.getSigners();
   console.log(`deployer address: ${await deployer.getAddress()}`);
   console.log(`deployer balance: ${await deployer.getBalance()}`);
 
-  const erc721: TrustAuthyGame = await inisrizeWolfTribe();
+  const erc721: TrustAuthyGame = await inisrizeTrustAuthyGame();
   for (const code of codes) {
     const response = await erc721.reorderAndDecryptCharacters(code);
     console.log(`Response for code ${code}:`, response);

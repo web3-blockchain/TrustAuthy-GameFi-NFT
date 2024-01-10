@@ -1,14 +1,14 @@
 import { ethers } from 'hardhat';
 import { BigNumber, providers, utils } from 'ethers';
 import { TrustAuthyGameV2 } from '../../types';
-import { inisrizeWolfTribeV2 } from '../../lib/contractUtil';
+import { inisrizeTrustAuthyGameV2 } from '../../lib/contractUtil';
 
 async function main(tokenIds: number[], uris: string[]) {
   const [deployer] = await ethers.getSigners();
   console.log(`deployer address: ${await deployer.getAddress()}`);
   console.log(`deployer balance: ${await deployer.getBalance()}`);
 
-  const erc721: TrustAuthyGameV2 = await inisrizeWolfTribeV2();
+  const erc721: TrustAuthyGameV2 = await inisrizeTrustAuthyGameV2();
   const estimateGas: BigNumber = await erc721
     .connect(deployer)
     .estimateGas.setMultipleUris(tokenIds, uris);

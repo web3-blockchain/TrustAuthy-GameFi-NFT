@@ -1,7 +1,7 @@
 import { ethers } from 'hardhat';
 import { BigNumber, providers } from 'ethers';
 import { TrustAuthyGame } from '../types';
-import { inisrizeWolfTribe } from '../lib/contractUtil';
+import { inisrizeTrustAuthyGame } from '../lib/contractUtil';
 import { env } from '../lib/config';
 
 async function main() {
@@ -9,7 +9,7 @@ async function main() {
   console.log(`deployer address: ${await deployer.getAddress()}`);
   console.log(`deployer balance: ${await deployer.getBalance()}`);
 
-  const erc721: TrustAuthyGame = await inisrizeWolfTribe();
+  const erc721: TrustAuthyGame = await inisrizeTrustAuthyGame();
   const estimateGas: BigNumber = await erc721
     .connect(deployer)
     .estimateGas.initialize(

@@ -1,8 +1,8 @@
 import { TrustAuthyGame } from '../../../types';
-import { inisrizeWolfTribe } from '../../../lib/contractUtil';
+import { inisrizeTrustAuthyGame } from '../../../lib/contractUtil';
 
 async function main() {
-  const erc721: TrustAuthyGame = await inisrizeWolfTribe();
+  const erc721: TrustAuthyGame = await inisrizeTrustAuthyGame();
   const tokenIds = await erc721.totalSupply();
 
   for (let tokenId = 1; tokenId <= Number(tokenIds.toString()); tokenId++) {

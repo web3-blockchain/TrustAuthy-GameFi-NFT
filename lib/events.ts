@@ -1,10 +1,10 @@
 import { CodeMintedEventFilter, TrustAuthyGame } from "../types/src/TrustAuthyGame";
-import { JsonRpcProvider, inisrizeWolfTribe } from "./contractUtil";
+import { JsonRpcProvider, inisrizeTrustAuthyGame } from "./contractUtil";
 const fromBlock = 21535039;
 let currentBlock = fromBlock;
 
 async function fetchDeposited(round: number) {
-    const erc721: TrustAuthyGame = await inisrizeWolfTribe();
+    const erc721: TrustAuthyGame = await inisrizeTrustAuthyGame();
     const fromBlock = 21535039;
     const latestBlock = await JsonRpcProvider.getBlockNumber();
     const maxRange = 50000;
@@ -28,7 +28,7 @@ async function fetchDeposited(round: number) {
 }
 
 async function fetchCodeMinted() {
-    const erc721: TrustAuthyGame = await inisrizeWolfTribe();
+    const erc721: TrustAuthyGame = await inisrizeTrustAuthyGame();
     const fromBlock = 21535039;
     const latestBlock = await JsonRpcProvider.getBlockNumber();
     const maxRange = 50000;

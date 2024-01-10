@@ -1,6 +1,6 @@
 import { ethers } from 'hardhat';
 import { TrustAuthyGame } from '../../../types';
-import { JsonRpcProvider, inisrizeWolfTribe } from '../../../lib/contractUtil';
+import { JsonRpcProvider, inisrizeTrustAuthyGame } from '../../../lib/contractUtil';
 import { utils } from 'ethers';
 
 async function main() {
@@ -8,7 +8,7 @@ async function main() {
   console.log(`deployer address: ${await deployer.getAddress()}`);
   console.log(`deployer balance: ${await deployer.getBalance()}`);
 
-  const erc721: TrustAuthyGame = await inisrizeWolfTribe();
+  const erc721: TrustAuthyGame = await inisrizeTrustAuthyGame();
   const erc721Balance = await JsonRpcProvider.getBalance(erc721.address);
   console.log(utils.formatUnits(erc721Balance, 18));
 }
