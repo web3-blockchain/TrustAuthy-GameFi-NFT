@@ -1,5 +1,8 @@
 import { TrustAuthyGame } from '../../../types';
-import { JsonRpcProvider, inisrizeTrustAuthyGame } from '../../../lib/contractUtil';
+import {
+  JsonRpcProvider,
+  inisrizeTrustAuthyGame,
+} from '../../../lib/contractUtil';
 const webhookUrl =
   'https://hooks.slack.com/services/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';
 // 'https://hooks.slack.com/services/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'

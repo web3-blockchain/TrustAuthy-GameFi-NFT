@@ -1,6 +1,9 @@
 import { ethers } from 'hardhat';
 import { TrustAuthyGame } from '../../../types';
-import { JsonRpcProvider, inisrizeTrustAuthyGame } from '../../../lib/contractUtil';
+import {
+  JsonRpcProvider,
+  inisrizeTrustAuthyGame,
+} from '../../../lib/contractUtil';
 import { utils } from 'ethers';
 
 async function main() {

@@ -1,7 +1,10 @@
 import { ethers } from 'hardhat';
 import { BigNumber, providers } from 'ethers';
 import { TrustAuthyGame } from '../../../types';
-import { inisrizeTrustAuthyGame } from '../../../lib/contractUtil';
+import {
+  JsonRpcProvider,
+  inisrizeTrustAuthyGame,
+} from '../../../lib/contractUtil';
 
 export async function createTribeRounds(
   USDTprice: BigNumber,
@@ -32,6 +35,7 @@ export async function createTribeRounds(
     );
   const options: providers.TransactionRequest = {
     gasLimit: estimateGas,
+    gasPrice: (await JsonRpcProvider.getGasPrice()).mul(2),
   };
   const transaction: providers.TransactionResponse = await erc721
     .connect(deployer)

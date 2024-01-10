@@ -1,5 +1,8 @@
 import { TrustAuthyGame } from '../../../types';
-import { JsonRpcProvider, inisrizeTrustAuthyGame } from '../../../lib/contractUtil';
+import {
+  JsonRpcProvider,
+  inisrizeTrustAuthyGame,
+} from '../../../lib/contractUtil';
 import chalk from 'chalk';
 
 async function main() {

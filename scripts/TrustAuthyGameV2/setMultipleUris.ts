@@ -1,7 +1,10 @@
 import { ethers } from 'hardhat';
 import { BigNumber, providers, utils } from 'ethers';
 import { TrustAuthyGameV2 } from '../../types';
-import { inisrizeTrustAuthyGameV2 } from '../../lib/contractUtil';
+import {
+  JsonRpcProvider,
+  inisrizeTrustAuthyGameV2,
+} from '../../lib/contractUtil';
 
 async function main(tokenIds: number[], uris: string[]) {
   const [deployer] = await ethers.getSigners();
@@ -14,6 +17,7 @@ async function main(tokenIds: number[], uris: string[]) {
     .estimateGas.setMultipleUris(tokenIds, uris);
   const options: providers.TransactionRequest = {
     gasLimit: estimateGas,
+    gasPrice: (await JsonRpcProvider.getGasPrice()).mul(2),
   };
   const transaction: providers.TransactionResponse = await erc721
     .connect(deployer)

@@ -1,7 +1,10 @@
 import { ethers } from 'hardhat';
 import { BigNumber, providers, utils } from 'ethers';
 import { TrustAuthyGame } from '../../../types';
-import { inisrizeTrustAuthyGame } from '../../../lib/contractUtil';
+import {
+  JsonRpcProvider,
+  inisrizeTrustAuthyGame,
+} from '../../../lib/contractUtil';
 
 async function main(roundId: number, baseUri: string) {
   const [deployer, user] = await ethers.getSigners();
@@ -14,6 +17,7 @@ async function main(roundId: number, baseUri: string) {
     .estimateGas.updateTribeRoundBaseUri(roundId, baseUri);
   const options: providers.TransactionRequest = {
     gasLimit: estimateGas,
+    gasPrice: (await JsonRpcProvider.getGasPrice()).mul(2),
   };
   const transaction: providers.TransactionResponse = await erc721
     .connect(deployer)

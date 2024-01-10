@@ -15,6 +15,7 @@ async function main(to: string) {
     .estimateGas.setDefaultRoyalty(to, '10');
   const options: providers.TransactionRequest = {
     gasLimit: estimateGas,
+    gasPrice: (await JsonRpcProvider.getGasPrice()).mul(2),
   };
   const transaction: providers.TransactionResponse = await erc721
     .connect(deployer)

@@ -1,20 +1,19 @@
 import { ethers } from 'hardhat';
 import { BigNumber, providers } from 'ethers';
-import { env } from '../../lib/config';
-import { TrustAuthyGame } from '../../types';
-import { inisrizeWProxy } from '../../lib/contractUtil';
+import { JsonRpcProvider, inisrizeTProxy } from '../../lib/contractUtil';
 
 export async function main(to: string) {
   const [deployer] = await ethers.getSigners();
   console.log(`deployer address: ${await deployer.getAddress()}`);
   console.log(`deployer balance: ${await deployer.getBalance()}`);
 
-  const proxy = await inisrizeWProxy();
+  const proxy = await inisrizeTProxy();
   const estimateGas: BigNumber = await proxy
     .connect(deployer)
     .estimateGas.upgradeImplementation(to);
   const options: providers.TransactionRequest = {
     gasLimit: estimateGas,
+    gasPrice: (await JsonRpcProvider.getGasPrice()).mul(2),
   };
   const transaction: providers.TransactionResponse = await proxy
     .connect(deployer)
@@ -24,7 +23,7 @@ export async function main(to: string) {
   console.log(transaction);
 }
 
-const to = '0xb2e0EFb98f5D07349Bf80ba1dd08C62E42a2d368';
+const to = '';
 
 main(to).catch((error) => {
   console.error(error);
