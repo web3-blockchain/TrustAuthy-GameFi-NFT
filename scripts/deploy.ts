@@ -1,12 +1,12 @@
 import { ethers } from 'hardhat';
-import { utils } from 'ethers';
+import { JsonRpcProvider } from '../lib/contractUtil';
 
 async function main() {
   const [deployer] = await ethers.getSigners();
   console.log(`deployer address: ${await deployer.getAddress()}`);
   console.log(`deployer balance: ${await deployer.getBalance()}`);
   let options = {
-    gasPrice: utils.parseUnits('1', 'gwei'),
+    gasPrice: (await JsonRpcProvider.getGasPrice()).mul(4),
   };
 
   const token = await (
